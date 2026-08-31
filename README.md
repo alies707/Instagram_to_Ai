@@ -1,18 +1,20 @@
 # Instagram_to_Ai
 
-AI powered Instagram Business automation platform.
+## English Documentation
 
-## Stack
-- Python
-- FastAPI
-- PostgreSQL
-- Redis
-- Celery
-- OpenAI API
-- Meta Instagram Graph API
-- Telegram Admin Bot (planned)
+AI powered Instagram Business automation platform built with Python, FastAPI and OpenAI.
+
+## Features
+
+- Instagram Business API integration
+- AI caption generation
+- Automated publishing pipeline
+- Content scheduling
+- Analytics foundation
+- Telegram automation foundation
 
 ## Architecture
+
 ```
 Instagram Business
         |
@@ -22,31 +24,87 @@ FastAPI Backend
         |
 OpenAI API
         |
-Database + Scheduler
+PostgreSQL + Redis
+        |
+Celery Workers
 ```
 
-## Features roadmap
+## Technology Stack
 
-### Phase 1
-- Meta API integration structure
-- Token management
-- Account information
-- Publishing pipeline
+- Python 3.12
+- FastAPI
+- PostgreSQL
+- Redis
+- Celery
+- OpenAI API
+- Meta Instagram Graph API
+- Docker
 
-### Phase 2
-- AI caption generation
-- Hashtag generation
-- Content analysis
+## Installation
 
-### Phase 3
-- Comment management
-- Insights reports
-- Telegram control
-
-## Run
-
-Copy `.env.example` to `.env` and configure credentials.
-
-```
+```bash
+git clone https://github.com/alies707/Instagram_to_Ai.git
+cd Instagram_to_Ai
+cp .env.example .env
 docker compose up --build
 ```
+
+## Roadmap
+
+- Meta OAuth production flow
+- Secure token encryption
+- Full publishing workflow
+- Comment management
+- Insights dashboard
+- Telegram admin panel
+
+---
+
+# مستندات فارسی
+
+## معرفی پروژه
+
+Instagram_to_Ai یک سیستم هوشمند مدیریت اکانت Business اینستاگرام است که با Python ساخته می‌شود و قابلیت اتصال به هوش مصنوعی OpenAI را دارد.
+
+## امکانات
+
+- اتصال به Instagram Business API
+- تولید کپشن با هوش مصنوعی
+- انتشار خودکار محتوا
+- زمان‌بندی پست‌ها
+- تحلیل محتوا
+- آماده‌سازی مدیریت کامنت و پنل مدیریتی
+
+## معماری
+
+```
+Instagram Business
+        |
+Meta Graph API
+        |
+FastAPI
+        |
+OpenAI
+        |
+PostgreSQL + Redis
+        |
+Celery
+```
+
+## نصب
+
+```bash
+git clone https://github.com/alies707/Instagram_to_Ai.git
+cd Instagram_to_Ai
+cp .env.example .env
+docker compose up --build
+```
+
+## مسیر توسعه
+
+- تکمیل OAuth متا
+- رمزنگاری Tokenها
+- انتشار کامل پست
+- مدیریت کامنت
+- داشبورد تحلیل
+- کنترل با Telegram Bot
