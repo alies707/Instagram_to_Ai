@@ -4,12 +4,42 @@ services:
     working_dir: /app
     volumes:
       - .:/app
+    env_file:
+      - .env
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000
     ports:
       - "8000:8000"
+    depends_on:
+      - redis
+      - postgres
+
+  worker:
+    image: python:3.12
+    working_dir: /app
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: celery -A app.worker worker --loglevel=info
+    depends_on:
+      - redis
+      - postgres
+
+  scheduler:
+    image: python:3.12
+    working_dir: /app
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: celery -A app.worker beat --loglevel=info
+    depends_on:
+      - redis
 
   redis:
-    image: redis:latest
+    image: redis:7
+    volumes:
+      - redis_data:/data
 
   postgres:
     image: postgres:16
@@ -17,5 +47,11 @@ services:
       POSTGRES_DB: instagram_ai
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+volumes:
+  postgres_data:
+  redis_data:
