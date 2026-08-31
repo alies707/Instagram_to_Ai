@@ -10,3 +10,8 @@ redis
 celery
 apscheduler
 python-telegram-bot
+alembic
+cryptography
+pytest
+pytest-asyncio
+httpx
